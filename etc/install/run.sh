@@ -4,6 +4,11 @@ sudo apt-add-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc)
 sudo apt-get update
 echo 'Done updating package repositories'
 
+# Install git
+echo 'Installing git...'
+sudo apt-get install -y git
+echo 'Done installing git'
+
 # Configure mysql package with root password so the installer
 # doesn't prompt for one during installation
 echo 'Configuring mysql package with root password...'
