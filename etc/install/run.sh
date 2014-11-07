@@ -21,6 +21,10 @@ echo 'Installing Apache, MySql, and PHP...'
 sudo apt-get install -y lamp-server^
 echo 'Done installing Apache, MySql, and PHP'
 
+# Set up Student database for application
+echo 'Setting up Student db...'
+mysqladmin --user root --password=acmrocks create Student
+
 # Install PHP extensions
 echo 'Installing some PHP extensions...'
 sudo apt-get install -y php5-curl
