@@ -47,3 +47,14 @@ vagrant up
 ```
 
 This will restart our Virtual Machine and you should be seeing the same screen pop up, now asking you to login in. Your username is `vagrant` and password is also `vagrant`
+
+# Next Steps
+On the VM, you can open firefox by going to `Applications` then searching for `firefox`. You can also open up a terminal by searching for `terminal`.
+
+Go ahead and open a terminal and type the following
+```bash
+cd /vagrant
+ls
+```
+
+Looks familiar? Should be the same files you downloaded previously.
