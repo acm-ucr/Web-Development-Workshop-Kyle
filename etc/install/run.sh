@@ -9,10 +9,14 @@ echo 'Installing git...'
 sudo apt-get install -y git
 echo 'Done installing git'
 
-# Install GNOME GUI
-echo 'Installing GNOME...'
-sudo apt-get install -y xorg gnome-core gnome-system-tools gnome-app-install
-echo 'Done installing GNOME'
+# Install LXDE 
+echo 'Installing Cinnamon Desktop'
+sudo add-apt-repository ppa:lestcape/cinnamon
+sudo apt-get update
+yes | sudo apt-get install cinnamon
+#yes | sudo apt-get install firefox
+echo 'Done installing Cinnamon!'
+
 
 # Configure mysql package with root password so the installer
 # doesn't prompt for one during installation
@@ -65,6 +69,10 @@ sudo a2dissite 000-default.conf
 sudo a2ensite student.dev.conf
 # Restart Apache
 sudo service apache2 restart
+# Enable Modrewrite
+sudo a2enmod rewrite
+# Restart Apache
+sudo service apache2 restart
 
 echo 'Done setting up apache server'
 
@@ -74,9 +82,18 @@ sudo echo '127.0.0.1 www.student.dev' >> /etc/hosts
 sudo echo '127.0.0.1 student.dev' >> /etc/hosts
 echo 'Done setting up host file'
 
-# 
-
 # Install composer
 echo 'Installing Composer...'
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/vagrant --filename=composer.phar
 echo 'Done installing Composer'
+
+# Installing vendor libraries for Symfony
+echo 'Installing Symfony2 Vendors'
+cd /vagrant
+php composer.phar install --no-dev --optimize-autoloader
+echo 'Done installinv vendor libraries'
+
+echo 'Installing xinit'
+yes | sudo apt-get install xinit
+echo 'Installing Firefox'
+yes | sudo apt-get install firefox
