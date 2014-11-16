@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Run our install script
   config.vm.network :private_network, ip: "192.168.128.128"
-  config.vm.synced_folder "./", "/vagrant",:nfs => true #, :mount_options => ["dmode=777,fmode=777"], 
+  config.vm.synced_folder "./", "/vagrant", :mount_options => ["dmode=777,fmode=777"] 
   config.vm.provision "shell", path: "etc/install/run.sh"
 
   # Virtualbox specific settings
